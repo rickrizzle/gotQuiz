@@ -1,0 +1,20 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  text-align: center;
+}
+
+.control {
+  margin: auto;
+  display: inline-block;
+  padding-top: 1em;
+}
+
+.radio {
+  margin: 10px 20px 10px 20px;
+}
+
+.button {
+  margin-top: 25px;
+}

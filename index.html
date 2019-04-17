@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+  </head>
+  <body class="has-background-grey">
+    <!--Begining section/title-->
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Which Game of Thrones House Do You Belong In?
+        </h1>
+        <p class="subtitle">Click to Start the <strong>Quiz</strong></p>
+      </div>
+    </section>
+
+    <!--First column: question text, buttons for answers selected-->
+    <div class="container">
+      <div class="column is-full has-background-grey-lighter">
+        <div class="question">
+          <h2 id="question" class="title is-2"></h2>
+        </div>
+
+        <div class="control">
+          <label class="radio subtitle is-4">
+            <input type="radio" name="answer" data-number="1" />
+            <p id="answer" class="choice-text" data-number="1">Choice 1</p>
+          </label>
+          <label class="radio subtitle is-4">
+            <input type="radio" name="answer" />
+            <p class="choice-text" data-number="2">Choice 2</p>
+          </label>
+          <label class="radio subtitle is-4">
+            <input type="radio" name="answer" />
+            <p class="choice-text" data-number="3">Choice 3</p>
+          </label>
+          <label class="radio subtitle is-4">
+            <input type="radio" name="answer" />
+            <p class="choice-text" data-number="4">Choice 4</p>
+          </label>
+        </div>
+      </div>
+      <input class="button" type="submit" value="Submit input" />
+    </div>
+    <section class="section">
+      <progress class="progress" value="0" max="100">0%</progress>
+      <p class="progress-text has-text-weight-bold">
+        Your Quiz-Quest has Only Just begun...
+      </p>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
