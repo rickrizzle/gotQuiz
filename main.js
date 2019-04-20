@@ -81,7 +81,7 @@ let questionCounterTextProg = [
   "One more, mayhaps?"
 ];
 //CONSTANTS
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 5;
 
 startGame = () => {
@@ -124,17 +124,26 @@ getNewQuestion = () => {
 
   availableQuestions.splice(questionIndex, 1);
   acceptingAnswers = true;
+  /* Loop that works to inject changing html, but cannot figure out splice()
+  textSequence(0);
+  function textSequence(i) {
+    if (counterText.length > i) {
+      const counterIndex = (document.getElementById(
+        "questionCounter"
+      ).innerHTML = counterText[i]);
+      textSequence(++i);
+      // counterIndex.splice(i, 1);
+    } else if (counterText.length == i) {
+      textSequence(0);
+    }
+  }
+  */
 
   const counterIndex = Math.floor(Math.random() * counterText.length);
   currentCounterText = counterText[counterIndex];
   questionCounterText.innerText = currentCounterText;
 
   counterText.splice(counterIndex, 1);
-  /*
-  progress.forEach(prog => {
-    const text = prog.progressText[i];
-    prog.innerHTML = progressText[i];
-  });*/
 };
 
 /*const textIndex = Math.floor(Math.random() * availableProgressText.length);
@@ -153,17 +162,13 @@ choices.forEach(choice => {
     const classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-    /*
-    incrementQuestionCounter => i {
-        if (questionCounterTextProg.length > i) {
-            setTimeout(function(){
-                document.getElementById('questionCounter').innerHTML = questionCounterTextProg[i];
-                incrementQuestionCounter(++i);
-            });
-        } else if (questionCounterTextProg.length == i) {
-            incrementQuestionCounter(0);
-        }
-    } */
+    incrementScore = num => {
+      score += num;
+      scoreText.innerText = score;
+    };
+    if (classToApply === "correct") {
+      incrementScore(CORRECT_BONUS);
+    }
 
     // if (userAnswers >= 3 * 'stark' ) {
     //   send to 'You Belong in House Stark' end page
