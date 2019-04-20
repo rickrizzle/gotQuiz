@@ -1,15 +1,16 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 //const answers = Array.from(document.getElementById("answer"));
-//const questionCounterText = document.getElementById("questionCounter");
-let progress = Array.from(document.getElementById("progressText"));
-//const score = document.getElementById("score");
+const questionCounterText = document.getElementById("questionCounter");
+const scoreText = document.getElementById("score");
 const submitButton = document.getElementsByClassName("button");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
 let questionCounter = 0;
 let availableQuestions = [];
+let currentCounterText = {};
+let counterText = [];
 
 let questions = [
   {
@@ -38,7 +39,7 @@ let questions = [
     answer: 2
   },
   {
-    question: "What color eyes for Targaryen's have?",
+    question: "What color eyes do Targaryen's have?",
     choice1: "Violet",
     choice2: "Blue",
     choice3: "Brown",
@@ -55,7 +56,7 @@ let questions = [
     answer: 3
   }
 ];
-
+/*
 let progressText = [
   //'Your Quiz-Quest has Only Just Begun...',
   "Continue forward to the Wall!",
@@ -63,6 +64,7 @@ let progressText = [
   "Make it past this question, and the three-eyed raven will visit you...",
   "One more, mayhaps?"
 ];
+*/
 //looping for however many questions are in array (5, so far)
 /*for(let i=0; i < questions.length; i++){
     let response = choice[i];
@@ -71,6 +73,13 @@ let progressText = [
     }
 }*/
 
+let questionCounterTextProg = [
+  "Your Quiz-Quest has Only Just Begun...",
+  "Continue forward to the Wall!",
+  "Hodor Hodor!",
+  "Make it past this question, and the three-eyed raven will visit you...",
+  "One more, mayhaps?"
+];
 //CONSTANTS
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 5;
@@ -80,7 +89,8 @@ startGame = () => {
   score = 0;
   availableQuestions = [...questions]; //takes available array and spreads them in a new array
   // console.log(availableQuestions);
-  availableProgressText = [...progressText];
+  counterText = [...questionCounterTextProg];
+
   getNewQuestion();
   submitButton.onclick = function() {
     showResults(questions, answer);
@@ -115,37 +125,21 @@ getNewQuestion = () => {
   availableQuestions.splice(questionIndex, 1);
   acceptingAnswers = true;
 
+  const counterIndex = Math.floor(Math.random() * counterText.length);
+  currentCounterText = counterText[counterIndex];
+  questionCounterText.innerText = currentCounterText;
+
+  counterText.splice(counterIndex, 1);
+  /*
   progress.forEach(prog => {
     const text = prog.progressText[i];
     prog.innerHTML = progressText[i];
-  });
+  });*/
+};
 
-  textSequence(0);
-  let progressText = [
-    //'Your Quiz-Quest has Only Just Begun...',
-    "Continue forward to the Wall!",
-    "Hodor Hodor!",
-    "Make it past this question, and the three-eyed raven will visit you...",
-    "One more, mayhaps?"
-  ];
-  function textSequence(i) {
-    if (progressText.length > i) {
-      document.getElementById("progressText").innerHTML = progressText[i];
-      textSequence(++i);
-      /*setTimeout(function() {
-        document.getElementById("progressText").innerHTML = progressText[i];
-        textSequence(++i);
-      }, 1000); // 1 second (in milliseconds)*/
-    } else if (progressText.length == i) {
-      // Loop
-      textSequence(0);
-    }
-  }
-
-  /*const textIndex = Math.floor(Math.random() * availableProgressText.length);
+/*const textIndex = Math.floor(Math.random() * availableProgressText.length);
   currentText = availableProgressText[textIndex];
   progress.innerText = currentQuestion.progress; */
-};
 
 choices.forEach(choice => {
   choice.addEventListener("click", e => {
@@ -159,6 +153,18 @@ choices.forEach(choice => {
     const classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
+    /*
+    incrementQuestionCounter => i {
+        if (questionCounterTextProg.length > i) {
+            setTimeout(function(){
+                document.getElementById('questionCounter').innerHTML = questionCounterTextProg[i];
+                incrementQuestionCounter(++i);
+            });
+        } else if (questionCounterTextProg.length == i) {
+            incrementQuestionCounter(0);
+        }
+    } */
+
     // if (userAnswers >= 3 * 'stark' ) {
     //   send to 'You Belong in House Stark' end page
 
@@ -167,3 +173,12 @@ choices.forEach(choice => {
 });
 
 startGame();
+function newFunction() {
+  return [
+    "Your Quiz-Quest has Only Just Begun...",
+    "Continue forward to the Wall!",
+    "Hodor Hodor!",
+    "Make it past this question, and the three-eyed raven will visit you...",
+    "One more, mayhaps?"
+  ];
+}
