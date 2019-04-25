@@ -3,6 +3,7 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 //const answers = Array.from(document.getElementById("answer"));
 const questionCounterText = document.getElementById("questionCounter");
 const scoreText = document.getElementById("score");
+const progressBar = document.getElementById("progressBar");
 const submitButton = document.getElementsByClassName("button");
 
 let currentQuestion = {};
@@ -99,6 +100,7 @@ startGame = () => {
 
 getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    localStorage.setItem("mostRecentScore", score);
     //go to the end page
     return window.location.assign("/end.html");
   }
@@ -178,12 +180,3 @@ choices.forEach(choice => {
 });
 
 startGame();
-function newFunction() {
-  return [
-    "Your Quiz-Quest has Only Just Begun...",
-    "Continue forward to the Wall!",
-    "Hodor Hodor!",
-    "Make it past this question, and the three-eyed raven will visit you...",
-    "One more, mayhaps?"
-  ];
-}

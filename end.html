@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>End Page</title>
+    <link rel="stylesheet" href="css/end.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+  </head>
+  <body class="has-background-grey">
+    <section class="section">
+      <div class="container flex-center flex-column">
+        <h1 id="finalScore" class="finalScore is-size-1"></h1>
+        <div class="field">
+          <label class="label">
+            <div class="control">
+              <input
+                type="text"
+                class="input"
+                name="username"
+                placeholder="Your Name"
+                id="username"
+              />
+            </div>
+          </label>
+        </div>
+        <button
+          type="submit"
+          class="btn"
+          id="saveScoreBtn"
+          onclick="saveHighScore(event)"
+          disabled
+        >
+          Save Your Score
+        </button>
+        <button class="btn">
+          <a href="/index.html" class="btn">Play Again</a>
+        </button>
+        <button class="btn">
+          <a href="/" class="btn">Go Home</a>
+        </button>
+      </div>
+    </section>
+
+    <script src="end.js"></script>
+  </body>
+</html>
